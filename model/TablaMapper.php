@@ -45,7 +45,7 @@ class TablaMapper {
 	}
 
 		public function save(Tabla $tabla) {
-			$stmt = $this->db->prepare("INSERT INTO tablatablas(nombretabla) values (?)");
+			$stmt = $this->db->prepare("INSERT INTO tablaejercicios(nombretabla) values (?)");
 			$stmt->execute(array($tabla->getNombre()));
 			return $this->db->lastInsertId();
 		}
