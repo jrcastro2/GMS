@@ -1,5 +1,5 @@
 <?php
-//file: view/ejercicios/view.php
+//file: view/ejercicios/view.phpadssdsa
 require_once(__DIR__."/../../core/ViewManager.php");
 $view = ViewManager::getInstance();
 
