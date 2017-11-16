@@ -1,0 +1,16 @@
+@keyframes backgroundflash {
+		75% { opacity:1.0}
+		100% {opacity:0.0; display:none}
+}
+
+#flash {
+	background-color:green;
+	animation: backgroundflash 5s forwards;
+}
+
+#nueva-nota{
+  border: 1px solid blue;
+  border-radius: 2px;
+  padding: 1px;
+  font-size: 15px;
+}
