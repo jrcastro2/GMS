@@ -24,6 +24,8 @@ $currentuser = $view->getVariable("currentusername");
 			<ul>
 				<li><a href="index.php?controller=ejercicios&amp;action=index">Ejercicios</a></li>
 
+				<li><a href="index.php?controller=tablas&amp;action=index">Tablas</a></li>
+
 				<?php if (isset($currentuser)): ?>
 					<li><?= sprintf(i18n("Hola %s"), $currentuser) ?>
 						<a 	href="index.php?controller=users&amp;action=logout"><?= i18n("Desconectar") ?></a>
