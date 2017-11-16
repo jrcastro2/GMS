@@ -39,7 +39,9 @@ class EjercicioMapper {
 			return new Ejercicio(
 			$ejercicio["idejercicio"],
 			$ejercicio["nombreejercicio"],
-			$ejercicio["descripcionejercicio"]);
+			$ejercicio["descripcionejercicio"],
+			$ejercicio["numerorepeticiones"],
+			$ejercicio["numeroseries"]);
 		} else {
 			return NULL;
 		}

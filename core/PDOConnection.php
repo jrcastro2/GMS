@@ -1,6 +1,8 @@
 <?php
 // file: /core/PDOConnection.php
 
+//grant all privileges on gymgms.* to gymuser@localhost identified by "gympass";
+
 class PDOConnection {
 	private static $dbhost = "127.0.0.1";
 	private static $dbname = "gymgms";
