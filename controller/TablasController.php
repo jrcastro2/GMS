@@ -38,11 +38,13 @@ class TablasController extends BaseController {
 		$tablaid = $_GET["idtabla"];
 
 		$tabla = $this->tablaMapper->findById($tablaid);
+		$ejercicios = $this->tablaMapper->findEjerciciosTabla($tablaid);
 
 		if ($tabla == NULL) {
 			throw new Exception("no such exercise with id: ".$tablaid);
 		}
 
+		$this->view->setVariable("ejercicios", $ejercicios);
 		$this->view->setVariable("tabla", $tabla);
 
 		$this->view->render("tablas", "view");
