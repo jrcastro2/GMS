@@ -13,11 +13,10 @@ $view->setVariable("title", "Ejercicios");
 
 <?php if (isset($currentuser)): ?>
 	<div class="col-md-12">
-    <a href="index.php?controller=ejercicios&amp;action=add"><?= i18n("Crear Ejercicio") ?></a>
+      <a class="glyphicon glyphicon-plus" id="nuevo-ejercicio" href="index.php?controller=ejercicios&amp;action=add" title="<?=i18n("Nuevo ejercicio");?>"></a>
     </div>
 <?php endif; ?>
-
-<table border="1">
+<table id=ejercicios>
 	<tr>
 		<th><?= i18n("Nombre")?></th><th><?= i18n("Descripcion")?></th><th><?= i18n("Series")?></th><th><?= i18n("Repeticiones")?></th><th><?= i18n("Acciones")?></th>
 	</tr>

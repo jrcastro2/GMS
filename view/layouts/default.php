@@ -9,6 +9,14 @@ $currentuser = $view->getVariable("currentusername");
 <head>
 	<title><?= $view->getVariable("title", "no title") ?></title>
 	<meta charset="utf-8">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Permanent Marker' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Patrick Hand' rel='stylesheet'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="js/general_js.js"></script>
+
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<!-- enable ji18n() javascript function to translate inside your scripts -->
 	<script src="index.php?controller=language&amp;action=i18njs">
@@ -16,25 +24,28 @@ $currentuser = $view->getVariable("currentusername");
 	<?= $view->getFragment("css") ?>
 	<?= $view->getFragment("javascript") ?>
 </head>
-<body>
+<body  class="body-index">
 	<!-- header -->
 	<header>
-		<h1>GMS</h1>
-		<nav id="menu" style="background-color:grey">
-			<ul>
-				<li><a href="index.php?controller=ejercicios&amp;action=index">Ejercicios</a></li>
+		<nav class="navbar navbar-inverse" id="navfontcolor">
+	    <div class="container-fluid">
+	      <div class="navbar-header">
+	        <a class="navbar-brand" href="index.php?controller=ejercicios&amp;action=index">GMS</a>
+	      </div>
 
-				<li><a href="index.php?controller=tablas&amp;action=index">Tablas</a></li>
+				<span id="spanlang"> <?php include(__DIR__."/language_select_element.php");?> </span>
 
-				<?php if (isset($currentuser)): ?>
-					<li><?= sprintf(i18n("Hola %s"), $currentuser) ?>
-						<a 	href="index.php?controller=users&amp;action=logout"><?= i18n("Desconectar") ?></a>
-					</li>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="index.php?controller=ejercicios&amp;action=index"><?= i18n("Ejercicios") ?></a></li>
 
-				<?php else: ?>
-					<li><a href="index.php?controller=users&amp;action=login"><?= i18n("Entrar") ?></a></li>
-				<?php endif ?>
-			</ul>
+					<li><a href="index.php?controller=tablas&amp;action=index"><?= i18n("Tablas") ?></a></li>
+
+					<?php if (isset($currentuser)): ?>
+	        <li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> <?= $currentuser; ?> </p></li>
+					<?php endif ?>
+	        <li><a href="index.php?controller=users&amp;action=logout"><span class="glyphicon glyphicon-log-in"></span> <?= i18n("Cerrar sesion") ?></a></li>
+	      </ul>
+
 		</nav>
 	</header>
 
@@ -47,9 +58,7 @@ $currentuser = $view->getVariable("currentusername");
 	</main>
 
 	<footer>
-		<?php
-		include(__DIR__."/language_select_element.php");
-		?>
+
 	</footer>
 
 </body>

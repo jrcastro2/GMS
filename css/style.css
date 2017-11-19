@@ -1,16 +1,300 @@
-@keyframes backgroundflash {
-		75% { opacity:1.0}
-		100% {opacity:0.0; display:none}
+/*PAGINA PRINCIPAL*/
+body, header {
+  font-family: 'Raleway';
+  overflow: auto;
 }
 
-#flash {
-	background-color:green;
-	animation: backgroundflash 5s forwards;
+.navbar {
+  border-radius: 0px;
+  background: #084D48;
+  border: none;
 }
 
-#nueva-nota{
-  border: 1px solid blue;
-  border-radius: 2px;
+.body-index{
+  background-image: url("fondorojo.jpg");
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+h1{
+  color: white;
+}
+
+#ver-ejercicio{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: white;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#vistaejercicio{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+#ejercicios{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#ejercicios td, #ejercicios th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#ejercicios tr:nth-child(even){background-color: #f2f2f2;}
+
+#ejercicios tr {background-color: #ddd;}
+
+#ejercicios th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+#nuevo-ejercicio{
   padding: 1px;
   font-size: 15px;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.crearEjercicio {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+/******************************************************************************************************/
+
+#languagechooser li, ul{
+  display: inline-block;
+  padding: 7px 0px 0px 5px;
+}
+
+
+#navfontcolor p, #navfontcolor a{
+  color: white;
+}
+
+.navbar-brand{
+  font-size: 25px;
+}
+
+.navbar-right{
+  font-size: 18px;
+}
+
+.glyphicon-user{
+  margin-left: 15px;
+}
+
+
+
+
+
+@media screen and (max-width:991px) {
+
+  .body-index{
+    background-image: url("postit-group 1920.png");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100%;
+    height: auto;
+  }
+}
+/*---------------------------- fin pagina principal------------------------*/
+/*------------- Login ------------------------------------------ */
+.login-reg {
+  padding-top: 10%;
+}
+
+html, body{
+  height: 100%;
+}
+
+.body-login-reg{
+  background-image: url("postit_transp.png");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  max-width: 100%;
+  height: auto;
+  font-family: 'Permanent Marker';
+}
+
+.login-reg h1 {
+  color: #084D48;
+  font-size: 50px;
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.login-reg .form-group {
+  width: 35%;
+  margin: auto;
+  margin-bottom: 25px;
+}
+
+.login-reg .form-control{
+  font-size: 22px;
+  font-family: 'Patrick Hand';
+  font-style: italic;
+}
+
+.btn-login{
+  background-color: #084D48;
+  color: white;
+}
+
+/****************************css scrollbar*************************************/
+.scrollbar::-webkit-scrollbar {
+    width: 7px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(125, 125, 125, 0.7);
+  outline: 1px solid #7D7D7D;
+  border-radius: 10px;
+}
+
+
+
+
+/******************************************************************************/
+
+#flash{
+  text-align: center;
+  color: #337ab7;
+}
+
+#flasherror{
+  text-align: center;
+  color: red;
+}
+
+/***********************************@media*************************************/
+
+
+@media screen and (max-width:1000px) {
+  .login-reg h1 {
+    font-size: 40px;
+    padding-top: 20px;
+  }
+
+  .login-reg .form-group {
+      width: 40%;
+  }
+
+  #contenedornotaint{
+    width: 60%;
+  }
+
+  .formatonota{
+    display: block;
+  }
+}
+
+@media screen and (max-width:767px) {
+  #spanlang{
+    position: absolute;
+    top:0;
+    right:0;
+  }
+}
+
+
+@media screen and (max-width:685px) {
+  .login-reg h1 {
+    font-size: 40px;
+    padding-top: 20px;
+  }
+  .login-reg .form-group {
+      width: 40%;
+  }
+
+  .formatonota{
+    display: block;
+  }
+
+  #contenedornotaint{
+    width: 60%;
+  }
+}
+@media screen and (max-width:570px) {
+  .login-reg h1 {
+    padding-top: 35px;
+  }
+
+  .login-reg .form-group {
+      width: 50%;
+  }
+
+  .btn-login{
+        padding: 5px;
+  }
+
+  #contenedornotaint{
+    width: 60%;
+  }
+
+  .formatonota{
+    display: block;
+  }
+}
+
+@media screen and (max-width:400px) {
+  .login-reg h1 {
+    font-size: 22px;
+    padding-top: 55px;
+  }
+
+  .btn-login{
+    height: 30px;
+    font-size: 13px;
+    padding: 5px;
+  }
+
+  #crear-nota{
+    padding-left:10px;
+  }
+
+  .login-reg .form-group {
+      width: 90%;
+  }
+
+  #contenedornotaint{
+    width: 80%;
+  }
 }

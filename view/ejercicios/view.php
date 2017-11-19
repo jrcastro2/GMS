@@ -10,14 +10,15 @@ $errors = $view->getVariable("errors");
 $view->setVariable("title", "View Ejercicio");
 
 
-?><h1><?= i18n("Ejercicio").": ".htmlentities($ejercicio->getTitle()) ?></h1>
+?><h1 id="vistaejercicio"><?= i18n("Ejercicio").": ".htmlentities($ejercicio->getTitle()) ?></h1>
+<div id="ver-ejercicio">
+<p >
+	<?=htmlentities($ejercicio->getContent()) ?>
+</p>
+<p>
+	<?= i18n("Numero de series").": ".$ejercicio->getSeries() ?> <?= i18n("Numero de repeticiones").": ".htmlentities($ejercicio->getRepeticiones()) ?>
+</p>
+<p>
 
-<p>
-	<?= i18n("Descripcion").": ".htmlentities($ejercicio->getContent()) ?>
 </p>
-<p>
-	<?= i18n("Numero de series").": ".$ejercicio->getSeries() ?>
-</p>
-<p>
-	<?= i18n("Numero de repeticiones").": ".htmlentities($ejercicio->getRepeticiones()) ?>
-</p>
+</div>
