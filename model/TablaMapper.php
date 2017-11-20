@@ -54,30 +54,66 @@ class TablaMapper {
 	public function findEjerciciosTabla($idTabla){
 		$stmt = $this->db->prepare("SELECT Ejercicio_idejercicio FROM ejercicio_pertenece_tablaejercicios WHERE TablaEjercicios_idtabla=?");
 		$stmt->execute(array($idTabla));
-		$idejercicios = $stmt->fetch(PDO::FETCH_ASSOC);
+		$idejercicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 		$ejercicios_array = array();
+		if(sizeof($idejercicios) > 0){
+			foreach ($idejercicios as $ejercicioid) {
 
-		foreach ($idejercicios as $ejercicioid) {
-			$stmt = $this->db->prepare("SELECT * FROM ejercicio WHERE idejercicio=?");
-			$stmt->execute(array($ejercicioid));
-			$ejercicio = $stmt->fetch(PDO::FETCH_ASSOC);
+				$stmt = $this->db->prepare("SELECT * FROM ejercicio WHERE idejercicio=?");
+				$stmt->execute(array($idejercicios[0]["Ejercicio_idejercicio"]));
+				$ejercicio = $stmt->fetch(PDO::FETCH_ASSOC);
 
-			if($ejercicio != null) {
-				$ejerciciofinal = new Ejercicio(
-				$ejercicio["idejercicio"],
-				$ejercicio["nombreejercicio"],
-				$ejercicio["descripcionejercicio"],
-				$ejercicio["numerorepeticiones"],
-				$ejercicio["numeroseries"]);
+				if($ejercicio != null) {
+					$ejercicio = new Ejercicio(
+					$ejercicio["idejercicio"],
+					$ejercicio["nombreejercicio"],
+					$ejercicio["descripcionejercicio"],
+					$ejercicio["numerorepeticiones"],
+					$ejercicio["numeroseries"]);
 
-				array_push($ejercicios_array, $ejerciciofinal);
+					array_push($ejercicios_array, $ejercicio);
+				}
+					array_splice($idejercicios , 0 ,1);
 			}
 		}
+
 		return $ejercicios_array;
 
-}
+	}
+
+
+	/*public function findEjerciciosTabla($idTabla){
+		$stmt = $this->db->prepare("SELECT Ejercicio_idejercicio FROM ejercicio_pertenece_tablaejercicios WHERE TablaEjercicios_idtabla=?");
+		$stmt->execute(array($idTabla));
+		$idejercicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+		$ejercicios_array = array();
+		if(sizeof($idejercicios) > 0){
+			foreach ($idejercicios as $ejercicioid) {
+
+				$stmt = $this->db->prepare("SELECT * FROM ejercicio WHERE idejercicio=?");
+				$stmt->execute(array($idejercicios[0]["Ejercicio_idejercicio"]));
+				$ejercicio = $stmt->fetch(PDO::FETCH_ASSOC);
+
+				if($ejercicio != null) {
+					$ejercicio = new Ejercicio(
+					$ejercicio["idejercicio"],
+					$ejercicio["nombreejercicio"],
+					$ejercicio["descripcionejercicio"],
+					$ejercicio["numerorepeticiones"],
+					$ejercicio["numeroseries"]);
+
+					array_push($ejercicios_array, $ejercicio);
+				}
+			}
+		}
+
+		return $ejercicios_array;
+
+}*/
 
 
 

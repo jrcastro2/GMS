@@ -118,61 +118,10 @@ input[type=submit]:hover {
 
 
 
-@media screen and (max-width:991px) {
 
-  .body-index{
-    background-image: url("postit-group 1920.png");
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    max-width: 100%;
-    height: auto;
-  }
-}
 /*---------------------------- fin pagina principal------------------------*/
-/*------------- Login ------------------------------------------ */
-.login-reg {
-  padding-top: 10%;
-}
 
-html, body{
-  height: 100%;
-}
 
-.body-login-reg{
-  background-image: url("postit_transp.png");
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-  max-width: 100%;
-  height: auto;
-  font-family: 'Permanent Marker';
-}
-
-.login-reg h1 {
-  color: #084D48;
-  font-size: 50px;
-  text-align: center;
-  font-weight: bold;
-  padding-bottom: 20px;
-}
-
-.login-reg .form-group {
-  width: 35%;
-  margin: auto;
-  margin-bottom: 25px;
-}
-
-.login-reg .form-control{
-  font-size: 22px;
-  font-family: 'Patrick Hand';
-  font-style: italic;
-}
-
-.btn-login{
-  background-color: #084D48;
-  color: white;
-}
 
 /****************************css scrollbar*************************************/
 .scrollbar::-webkit-scrollbar {
@@ -204,97 +153,4 @@ html, body{
   color: red;
 }
 
-/***********************************@media*************************************/
-
-
-@media screen and (max-width:1000px) {
-  .login-reg h1 {
-    font-size: 40px;
-    padding-top: 20px;
-  }
-
-  .login-reg .form-group {
-      width: 40%;
-  }
-
-  #contenedornotaint{
-    width: 60%;
-  }
-
-  .formatonota{
-    display: block;
-  }
-}
-
-@media screen and (max-width:767px) {
-  #spanlang{
-    position: absolute;
-    top:0;
-    right:0;
-  }
-}
-
-
-@media screen and (max-width:685px) {
-  .login-reg h1 {
-    font-size: 40px;
-    padding-top: 20px;
-  }
-  .login-reg .form-group {
-      width: 40%;
-  }
-
-  .formatonota{
-    display: block;
-  }
-
-  #contenedornotaint{
-    width: 60%;
-  }
-}
-@media screen and (max-width:570px) {
-  .login-reg h1 {
-    padding-top: 35px;
-  }
-
-  .login-reg .form-group {
-      width: 50%;
-  }
-
-  .btn-login{
-        padding: 5px;
-  }
-
-  #contenedornotaint{
-    width: 60%;
-  }
-
-  .formatonota{
-    display: block;
-  }
-}
-
-@media screen and (max-width:400px) {
-  .login-reg h1 {
-    font-size: 22px;
-    padding-top: 55px;
-  }
-
-  .btn-login{
-    height: 30px;
-    font-size: 13px;
-    padding: 5px;
-  }
-
-  #crear-nota{
-    padding-left:10px;
-  }
-
-  .login-reg .form-group {
-      width: 90%;
-  }
-
-  #contenedornotaint{
-    width: 80%;
-  }
 }

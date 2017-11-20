@@ -42,10 +42,11 @@ $currentuser = $view->getVariable("currentusername");
 
 					<?php if (isset($currentuser)): ?>
 	        <li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> <?= $currentuser; ?> </p></li>
+					 <li><a href="index.php?controller=users&amp;action=logout"><span class="glyphicon glyphicon-log-in"></span> <?= i18n("Cerrar sesion") ?></a></li>
+				 <?php else: ?>
+					<li><a href="index.php?controller=users&amp;action=login"><?= i18n("Login") ?></a></li>
 					<?php endif ?>
-	        <li><a href="index.php?controller=users&amp;action=logout"><span class="glyphicon glyphicon-log-in"></span> <?= i18n("Cerrar sesion") ?></a></li>
 	      </ul>
-
 		</nav>
 	</header>
 
