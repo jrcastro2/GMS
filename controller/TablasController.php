@@ -2,6 +2,8 @@
 
 require_once(__DIR__."/../model/Tabla.php");
 require_once(__DIR__."/../model/TablaMapper.php");
+require_once(__DIR__."/../model/Ejercicio.php");
+require_once(__DIR__."/../model/EjercicioMapper.php");
 require_once(__DIR__."/../model/User.php");
 
 require_once(__DIR__."/../core/ViewManager.php");
@@ -12,11 +14,13 @@ class TablasController extends BaseController {
 
 
 	private $tablaMapper;
+	private $ejercicioMapper;
 
 	public function __construct() {
 		parent::__construct();
 
 		$this->tablaMapper = new TablaMapper();
+		$this->ejercicioMapper = new EjercicioMapper();
 	}
 
 
@@ -57,15 +61,22 @@ class TablasController extends BaseController {
 		}
 
 		$tabla = new Tabla();
+		$ejercicio = new Ejercicio();
 
 		if (isset($_POST["submit"])) {
 
 			$tabla->setNombre($_POST["nombretabla"]);
+			$nombreEjer = $_POST["nombreejercicio"];
+			$ejercicio = $this->ejercicioMapper->findByName($nombreEjer);
 
 			try {
 				$tabla->checkIsValidForCreate();
 
 				$this->tablaMapper->save($tabla);
+
+				$tablaF= $this->tablaMapper->findByName($tabla->getNombre());
+
+				$this->tablaMapper->asignarEjercicioTabla($tablaF->getId(),$ejercicio->getId());
 
 
 				$this->view->setFlash(sprintf(i18n("Tabla \"%s\" añadido."),$tabla ->getNombre()));
@@ -83,6 +94,7 @@ class TablasController extends BaseController {
 
 
 		$this->view->setVariable("tabla", $tabla);
+		$this->view->setVariable("ejercicio", $ejercicio);
 
 
 		$this->view->render("tablas", "add");
@@ -162,7 +174,7 @@ class TablasController extends BaseController {
 
 
 
-
+		$this->tablaMapper->deleteEjerciciosFromTabla($tabla);
 		$this->tablaMapper->delete($tabla);
 
 

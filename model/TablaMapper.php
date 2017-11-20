@@ -45,10 +45,24 @@ class TablaMapper {
 		}
 	}
 
+	public function findByName($tablaName){
+		$stmt = $this->db->prepare("SELECT * FROM tablaejercicios WHERE nombretabla=?");
+		$stmt->execute(array($tablaName));
+		$tabla = $stmt->fetch(PDO::FETCH_ASSOC);
+
+		if($tabla != null) {
+			return new Tabla(
+			$tabla["idtabla"],
+			$tabla["nombretabla"]);
+		} else {
+			return NULL;
+		}
+	}
+
 
 	public function asignarEjercicioTabla($tablaid,$ejercicioid){
-		$stmt->$this->db->prepare("INSERT INTO ejercicio_pertenece_tablaejercicios(Ejercicio_idejercicio, TablaEjercicios_idtabla) values (?,?)");
-		$stmt->execute(array($tablaid, $ejercicioid));
+		$stmt = $this->db->prepare("INSERT INTO ejercicio_pertenece_tablaejercicios(Ejercicio_idejercicio, TablaEjercicios_idtabla) values (?,?)");
+		$stmt->execute(array($ejercicioid,$tablaid));
 	}
 
 	public function findEjerciciosTabla($idTabla){
@@ -131,6 +145,11 @@ class TablaMapper {
 
 		public function delete(Tabla $tabla) {
 			$stmt = $this->db->prepare("DELETE from tablaejercicios WHERE idtabla=?");
+			$stmt->execute(array($tabla->getId()));
+		}
+
+		public function deleteEjerciciosFromTabla(Tabla $tabla) {
+			$stmt = $this->db->prepare("DELETE from ejercicio_pertenece_tablaejercicios WHERE TablaEjercicios_idtabla=?");
 			$stmt->execute(array($tabla->getId()));
 		}
 
