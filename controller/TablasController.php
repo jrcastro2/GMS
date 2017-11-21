@@ -172,10 +172,35 @@ class TablasController extends BaseController {
 			throw new Exception("Not in session. Editing tablas requires login");
 		}
 
-
+		$ejercicio = new Ejercicio();
 		$tablaid = $_REQUEST["idtabla"];
 		$tabla = $this->tablaMapper->findById($tablaid);
 		$ejercicios = $this->tablaMapper->findEjerciciosTabla($tablaid);
+
+		if(isset($_POST["nombreejercicio1"])){
+			$nombreEjer1 = $_POST["nombreejercicio1"];
+			$ejercicio1 = $this->ejercicioMapper->findByName($nombreEjer1);
+		}
+
+		if(isset($_POST["nombreejercicio2"])){
+			$nombreEjer2 = $_POST["nombreejercicio2"];
+			$ejercicio2 = $this->ejercicioMapper->findByName($nombreEjer2);
+		}
+
+		if(isset($_POST["nombreejercicio3"])){
+			$nombreEjer3 = $_POST["nombreejercicio3"];
+			$ejercicio3 = $this->ejercicioMapper->findByName($nombreEjer3);
+		}
+
+		if(isset($_POST["nombreejercicio4"])){
+			$nombreEjer4 = $_POST["nombreejercicio4"];
+			$ejercicio4 = $this->ejercicioMapper->findByName($nombreEjer4);
+		}
+
+		if(isset($_POST["nombreejercicio5"])){
+			$nombreEjer5 = $_POST["nombreejercicio5"];
+			$ejercicio5 = $this->ejercicioMapper->findByName($nombreEjer5);
+		}
 
 		if ($tabla == NULL) {
 			throw new Exception("no such exercise with id: ".$tablaid);
@@ -195,6 +220,42 @@ class TablasController extends BaseController {
 
 				$this->tablaMapper->update($tabla);
 
+				if($nombreEjer1!=null){
+					$ejercicio = $ejercicio1;
+					if($this->ejercicioMapper->exists($nombreEjer1)){
+						$this->tablaMapper->asignarEjercicioTabla($tabla->getId(),$ejercicio->getId());
+					}
+				}
+
+				if($nombreEjer2!=null){
+					$ejercicio = $ejercicio2;
+					if($this->ejercicioMapper->exists($nombreEjer2)){
+						$this->tablaMapper->asignarEjercicioTabla($tabla->getId(),$ejercicio->getId());
+					}
+				}
+
+				if($nombreEjer3!=null){
+					$ejercicio = $ejercicio3;
+					if($this->ejercicioMapper->exists($nombreEjer3)){
+						$this->tablaMapper->asignarEjercicioTabla($tabla->getId(),$ejercicio->getId());
+					}
+				}
+
+				if($nombreEjer4!=null){
+					$ejercicio = $ejercicio4;
+					if($this->ejercicioMapper->exists($nombreEjer4)){
+						$this->tablaMapper->asignarEjercicioTabla($tabla->getId(),$ejercicio->getId());
+					}
+				}
+
+				if($nombreEjer5!=null){
+					$ejercicio = $ejercicio5;
+					if($this->ejercicioMapper->exists($nombreEjer5)){
+						$this->tablaMapper->asignarEjercicioTabla($tabla->getId(),$ejercicio->getId());
+					}
+				}
+
+
 
 				$this->view->setFlash(sprintf(i18n("Tabla \"%s\" actualizado."),$tabla ->getNombre()));
 
@@ -208,7 +269,7 @@ class TablasController extends BaseController {
 				$this->view->setVariable("errors", $errors);
 			}
 		}
-
+		$this->view->setVariable("ejercicio", $ejercicio);
 		$this->view->setVariable("ejercicios", $ejercicios);
 		$this->view->setVariable("tabla", $tabla);
 
