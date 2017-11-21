@@ -153,4 +153,9 @@ class TablaMapper {
 			$stmt->execute(array($tabla->getId()));
 		}
 
+		public function deleteEjercicioFromTabla(Ejercicio $ejercicio, Tabla $tabla) {
+			$stmt = $this->db->prepare("DELETE from ejercicio_pertenece_tablaejercicios WHERE Ejercicio_idejercicio=? AND TablaEjercicios_idtabla=?");
+			$stmt->execute(array($ejercicio->getId(),$tabla->getId()));
+		}
+
 	}

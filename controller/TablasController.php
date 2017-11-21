@@ -175,6 +175,7 @@ class TablasController extends BaseController {
 
 		$tablaid = $_REQUEST["idtabla"];
 		$tabla = $this->tablaMapper->findById($tablaid);
+		$ejercicios = $this->tablaMapper->findEjerciciosTabla($tablaid);
 
 		if ($tabla == NULL) {
 			throw new Exception("no such exercise with id: ".$tablaid);
@@ -208,7 +209,7 @@ class TablasController extends BaseController {
 			}
 		}
 
-
+		$this->view->setVariable("ejercicios", $ejercicios);
 		$this->view->setVariable("tabla", $tabla);
 
 
@@ -240,6 +241,39 @@ class TablasController extends BaseController {
 
 
 		$this->view->setFlash(sprintf(i18n("Tabla \"%s\" eliminado."),$tabla ->getNombre()));
+
+
+		$this->view->redirect("tablas", "index");
+
+	}
+
+	public function deleteEjercicio() {
+		if (!isset($_GET["idejercicio"])) {
+			throw new Exception("id is mandatory");
+		}
+		if (!isset($_GET["idtabla"])) {
+			throw new Exception("id is mandatory");
+		}
+		if (!isset($this->currentUser)) {
+			throw new Exception("Not in session. Editing tablas requires login");
+		}
+		$tablaid = $_REQUEST["idtabla"];
+		$tabla = $this->tablaMapper->findById($tablaid);
+
+		$ejercicioid = $_REQUEST["idejercicio"];
+		$ejercicio = $this->ejercicioMapper->findById($ejercicioid);
+
+
+		if ($tabla == NULL) {
+			throw new Exception("no such exercise with id: ".$tablaid);
+		}
+
+
+
+		$this->tablaMapper->deleteEjercicioFromTabla($ejercicio, $tabla);
+
+
+		$this->view->setFlash(sprintf(i18n("Ejercicio eliminado.")));
 
 
 		$this->view->redirect("tablas", "index");
