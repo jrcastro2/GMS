@@ -64,6 +64,19 @@ class EjercicioMapper {
 		}
 	}
 
+	public function exists($ejercicioname){
+		$stmt = $this->db->prepare("SELECT * FROM ejercicio WHERE nombreejercicio=?");
+		$stmt->execute(array($ejercicioname));
+		$ejer = $stmt->fetch(PDO::FETCH_ASSOC);
+
+		if($ejer != null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
 
 
 

@@ -15,8 +15,22 @@ $view->setVariable("title", "Edit Tabla");
 	value="<?= $tabla->getNombre() ?>">
 	<?= isset($errors["nombretabla"])?i18n($errors["nombretabla"]):"" ?><br>
 
-	<?= i18n("Ejercicio") ?>: <input type="text" name="nombreejercicio">
-	<?= isset($errors["nombreejercicio"])?i18n($errors["nombreejercicio"]):"" ?><br>
+	<?= i18n("Ejercicio") ?>: <input type="text" name="nombreejercicio1">
+	<?= isset($errors["nombreejercicio1"])?i18n($errors["nombreejercicio1"]):"" ?><br>
+
+	<?= i18n("Ejercicio") ?>: <input type="text" name="nombreejercicio2">
+	<?= isset($errors["nombreejercicio2"])?i18n($errors["nombreejercicio2"]):"" ?><br>
+
+	<?= i18n("Ejercicio") ?>: <input type="text" name="nombreejercicio3">
+	<?= isset($errors["nombreejercicio3"])?i18n($errors["nombreejercicio3"]):"" ?><br>
+
+	<?= i18n("Ejercicio") ?>: <input type="text" name="nombreejercicio4">
+	<?= isset($errors["nombreejercicio4"])?i18n($errors["nombreejercicio4"]):"" ?><br>
+
+	<?= i18n("Ejercicio") ?>: <input type="text" name="nombreejercicio5">
+	<?= isset($errors["nombreejercicio5"])?i18n($errors["nombreejercicio5"]):"" ?><br>
+
+
 
 	<input type="submit" name="submit" value="submit">
 </form>
