@@ -17,13 +17,24 @@ $view->setVariable("title", "Edit Tabla");
 	value="<?= isset($_POST["nombretabla"])?$_POST["nombretabla"]:$tabla->getNombre() ?>">
 	<?= isset($errors["nombretabla"])?i18n($errors["nombretabla"]):"" ?><br>
 
+	<table class='tablas'>
+		<tr>
+			<th><?= i18n("Ejercicios")?></th><th><?= i18n("Eliminar")?></th>
+		</tr>
 	<?php foreach($ejercicios as $ejercicio): ?>
-		<p><?=  i18n("Ejercicio").": ".htmlentities($ejercicio->getTitle()) ?> </p>
-
-		<a href="index.php?controller=tablas&amp;action=deleteEjercicio&amp;idejercicio=<?=$ejercicio->getId()?>&amp;idtabla=<?=$tabla->getId()?>" class="	glyphicon glyphicon-remove" title="<?=i18n("Unshare note")?>"></a>
-	  <hr>
+		<tr>
+			<td>
+				<p><?=  i18n("Ejercicio").": ".htmlentities($ejercicio->getTitle()) ?> </p>
+			</td>
+			<td>
+				<a href="index.php?controller=tablas&amp;action=deleteEjercicio&amp;idejercicio=<?=$ejercicio->getId()?>&amp;idtabla=<?=$tabla->getId()?>" class="	glyphicon glyphicon-remove" title="<?=i18n("Unshare note")?>"></a>
+			</td>
+		</tr>
 
 	<?php endforeach; ?>
+
+<h3><?= i18n("Añadir ejercicios") ?></h3>
+	<div id=form>
 	<?= i18n("Ejercicio") ?>: <input type="text" name="nombreejercicio1">
 	<?= isset($errors["nombreejercicio1"])?i18n($errors["nombreejercicio1"]):"" ?><br>
 
@@ -38,7 +49,9 @@ $view->setVariable("title", "Edit Tabla");
 
 	<?= i18n("Ejercicio") ?>: <input type="text" name="nombreejercicio5">
 	<?= isset($errors["nombreejercicio5"])?i18n($errors["nombreejercicio5"]):"" ?><br>
-
+</div>
 	<input type="hidden" name="idtabla" value="<?= $tabla->getId() ?>">
 	<input type="submit" name="submit" value="<?= i18n("Modificar tabla") ?>">
+
 </form>
+<h3><?= i18n("Lista de ejercicios") ?></h3>

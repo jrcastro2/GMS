@@ -17,7 +17,7 @@ $view->setVariable("title", "Tablas");
     </div>
 <?php endif; ?>
 
-<table border="1">
+<table class='tablas'>
 	<tr>
 		<th><?= i18n("Nombre")?></th><th><?= i18n("Acciones")?></th>
 	</tr>
