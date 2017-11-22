@@ -337,7 +337,7 @@ class TablasController extends BaseController {
 		$this->view->setFlash(sprintf(i18n("Ejercicio eliminado.")));
 
 
-		$this->view->redirect("tablas", "index");
+		$this->view->redirect("tablas", "edit");
 
 	}
 }

@@ -6,7 +6,7 @@ body, header {
 
 .navbar {
   border-radius: 0px;
-  background: #084D48;
+  background: #9B0847;
   border: none;
 }
 
@@ -54,7 +54,7 @@ h1, h3{
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #4CAF50;
+    background-color: #9B0847;
     color: white;
 }
 
@@ -75,7 +75,7 @@ input[type=text], select {
 
 input[type=submit] {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: #9B0847;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -96,9 +96,11 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: #910787;
 }
-
+.padre{
+  display: inline-block;
+}
 
 .crearEjercicio {
     border-radius: 5px;

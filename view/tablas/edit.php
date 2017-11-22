@@ -11,12 +11,14 @@ $errors = $view->getVariable("errors");
 
 $view->setVariable("title", "Edit Tabla");
 
+
 ?><h1><?= i18n("Modificar Tabla") ?></h1>
 <form action="index.php?controller=tablas&amp;action=edit" method="POST">
+	<div class='form'>
 	<?= i18n("Nombre") ?>: <input type="text" name="nombretabla"
 	value="<?= isset($_POST["nombretabla"])?$_POST["nombretabla"]:$tabla->getNombre() ?>">
 	<?= isset($errors["nombretabla"])?i18n($errors["nombretabla"]):"" ?><br>
-
+</div>
 	<table class='tablas'>
 		<tr>
 			<th><?= i18n("Ejercicios")?></th><th><?= i18n("Eliminar")?></th>
