@@ -34,7 +34,7 @@ $view->setVariable("title", "Edit Tabla");
 	<?php endforeach; ?>
 
 <h3><?= i18n("Añadir ejercicios") ?></h3>
-	<div id=form>
+	<div class='form'>
 	<?= i18n("Ejercicio") ?>: <input type="text" name="nombreejercicio1">
 	<?= isset($errors["nombreejercicio1"])?i18n($errors["nombreejercicio1"]):"" ?><br>
 

@@ -11,9 +11,11 @@ $view->setVariable("title", "Edit Tabla");
 
 ?><h1><?= i18n("Crear tabla")?></h1>
 <form action="index.php?controller=tablas&amp;action=add" method="POST">
+<div class='form'>
 	<?= i18n("Nombre") ?>: <input type="text" name="nombretabla"
 	value="<?= $tabla->getNombre() ?>">
 	<?= isset($errors["nombretabla"])?i18n($errors["nombretabla"]):"" ?><br>
+
 
 	<?= i18n("Ejercicio") ?>: <input type="text" name="nombreejercicio1">
 	<?= isset($errors["nombreejercicio1"])?i18n($errors["nombreejercicio1"]):"" ?><br>
@@ -29,7 +31,7 @@ $view->setVariable("title", "Edit Tabla");
 
 	<?= i18n("Ejercicio") ?>: <input type="text" name="nombreejercicio5">
 	<?= isset($errors["nombreejercicio5"])?i18n($errors["nombreejercicio5"]):"" ?><br>
-
+</div>
 
 
 	<input type="submit" name="submit" value="submit">

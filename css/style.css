@@ -84,7 +84,7 @@ input[type=submit] {
     cursor: pointer;
 }
 
-#form {
+.form {
     width: 100%;
     background-color: #f2f2f2;
     color: black;
