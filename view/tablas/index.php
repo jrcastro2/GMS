@@ -13,7 +13,7 @@ $view->setVariable("title", "Tablas");
 
 <?php if (isset($currentuser)): ?>
 	<div class="col-md-12">
-    <a href="index.php?controller=tablas&amp;action=add"><?= i18n("Crear Tabla") ?></a>
+  <a class="glyphicon glyphicon-plus" id="nueva-tabla" href="index.php?controller=tablas&amp;action=add" title="<?=i18n("Nueva tabla");?>"></a>
     </div>
 <?php endif; ?>
 

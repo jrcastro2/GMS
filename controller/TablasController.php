@@ -140,7 +140,7 @@ class TablasController extends BaseController {
 
 
 
-				$this->view->setFlash(sprintf(i18n("Tabla \"%s\" añadido."),$tabla ->getNombre()));
+				$this->view->setFlash(sprintf(i18n("Tabla \"%s\" añadida."),$tabla ->getNombre()));
 
 
 				$this->view->redirect("tablas", "index");
@@ -223,41 +223,51 @@ class TablasController extends BaseController {
 				if($nombreEjer1!=null){
 					$ejercicio = $ejercicio1;
 					if($this->ejercicioMapper->exists($nombreEjer1)){
-						$this->tablaMapper->asignarEjercicioTabla($tabla->getId(),$ejercicio->getId());
+						if(!$this->tablaMapper->ejercicioAsignado($tabla,$ejercicio)){
+							$this->tablaMapper->asignarEjercicioTabla($tabla->getId(),$ejercicio->getId());
+						}
 					}
 				}
 
 				if($nombreEjer2!=null){
 					$ejercicio = $ejercicio2;
 					if($this->ejercicioMapper->exists($nombreEjer2)){
-						$this->tablaMapper->asignarEjercicioTabla($tabla->getId(),$ejercicio->getId());
+						if(!$this->tablaMapper->ejercicioAsignado($tabla,$ejercicio)){
+							$this->tablaMapper->asignarEjercicioTabla($tabla->getId(),$ejercicio->getId());
+						}
 					}
 				}
 
 				if($nombreEjer3!=null){
 					$ejercicio = $ejercicio3;
 					if($this->ejercicioMapper->exists($nombreEjer3)){
-						$this->tablaMapper->asignarEjercicioTabla($tabla->getId(),$ejercicio->getId());
+						if(!$this->tablaMapper->ejercicioAsignado($tabla,$ejercicio)){
+							$this->tablaMapper->asignarEjercicioTabla($tabla->getId(),$ejercicio->getId());
+						}
 					}
 				}
 
 				if($nombreEjer4!=null){
 					$ejercicio = $ejercicio4;
 					if($this->ejercicioMapper->exists($nombreEjer4)){
-						$this->tablaMapper->asignarEjercicioTabla($tabla->getId(),$ejercicio->getId());
+						if(!$this->tablaMapper->ejercicioAsignado($tabla,$ejercicio)){
+							$this->tablaMapper->asignarEjercicioTabla($tabla->getId(),$ejercicio->getId());
+						}
 					}
 				}
 
 				if($nombreEjer5!=null){
 					$ejercicio = $ejercicio5;
 					if($this->ejercicioMapper->exists($nombreEjer5)){
-						$this->tablaMapper->asignarEjercicioTabla($tabla->getId(),$ejercicio->getId());
+						if(!$this->tablaMapper->ejercicioAsignado($tabla,$ejercicio)){
+							$this->tablaMapper->asignarEjercicioTabla($tabla->getId(),$ejercicio->getId());
+						}
 					}
 				}
 
 
 
-				$this->view->setFlash(sprintf(i18n("Tabla \"%s\" actualizado."),$tabla ->getNombre()));
+				$this->view->setFlash(sprintf(i18n("Tabla \"%s\" actualizada."),$tabla ->getNombre()));
 
 
 				$this->view->redirect("tablas", "index");
@@ -301,7 +311,7 @@ class TablasController extends BaseController {
 		$this->tablaMapper->delete($tabla);
 
 
-		$this->view->setFlash(sprintf(i18n("Tabla \"%s\" eliminado."),$tabla ->getNombre()));
+		$this->view->setFlash(sprintf(i18n("Tabla \"%s\" eliminada."),$tabla ->getNombre()));
 
 
 		$this->view->redirect("tablas", "index");
@@ -337,7 +347,7 @@ class TablasController extends BaseController {
 		$this->view->setFlash(sprintf(i18n("Ejercicio eliminado.")));
 
 
-		$this->view->redirect("tablas", "edit");
+		$this->view->redirect("tablas", "index");
 
 	}
 }

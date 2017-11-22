@@ -97,6 +97,19 @@ class TablaMapper {
 
 	}
 
+	public function ejercicioAsignado($tabla,$ejercicio){
+		$stmt = $this->db->prepare("SELECT * FROM ejercicio_pertenece_tablaejercicios WHERE TablaEjercicios_idtabla=? AND Ejercicio_idejercicio=?");
+		$stmt->execute(array($tabla->getId(),$ejercicio->getId()));
+		$yaExiste = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		if($yaExiste != null) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
 
 	/*public function findEjerciciosTabla($idTabla){
 		$stmt = $this->db->prepare("SELECT Ejercicio_idejercicio FROM ejercicio_pertenece_tablaejercicios WHERE TablaEjercicios_idtabla=?");
