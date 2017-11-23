@@ -6,7 +6,7 @@ $view = ViewManager::getInstance();
 $actividad = $view->getVariable("actividad");
 $errors = $view->getVariable("errors");
 
-$view->setVariable("nombreactividad", "Edit Actividad");
+$view->setVariable("title", "Edit Actividad");
 
 ?><h1><?= i18n("Crear actividad")?></h1>
 <div class=crearEjercicio>
@@ -23,7 +23,7 @@ $view->setVariable("nombreactividad", "Edit Actividad");
 	<?= i18n("dia") ?>: <input type="text" name="dia"
 	value="<?= $actividad->getdia() ?>">
 	<?= isset($errors["dia"])?i18n($errors["dia"]):"" ?><br>
-	
+
 	<?= i18n("hora") ?>: <input type="text" name="hora"
 	value="<?= $actividad->gethora() ?>">
 	<?= isset($errors["hora"])?i18n($errors["hora"]):"" ?><br>

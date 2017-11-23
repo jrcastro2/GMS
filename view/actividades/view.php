@@ -7,7 +7,7 @@ $actividad = $view->getVariable("actividad");
 $currentuser = $view->getVariable("currentusername");
 $errors = $view->getVariable("errors");
 
-$view->setVariable("nombreactividad", "View Actividad");
+$view->setVariable("title", "View Actividad");
 
 
 ?><h1><?= i18n("Actividad").": ".htmlentities($actividad->getnombreactividad()) ?></h1>

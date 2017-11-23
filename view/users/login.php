@@ -6,6 +6,8 @@ $view = ViewManager::getInstance();
 
 $view->setVariable("nombreusuario", "Login");
 $errors = $view->getVariable("errors");
+
+$view->setVariable("title", "Login");
 ?>
 
 <h1><?= i18n("Entrar") ?></h1>

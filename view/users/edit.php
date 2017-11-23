@@ -6,7 +6,7 @@ $view = ViewManager::getInstance();
 $user = $view->getVariable("user");
 $errors = $view->getVariable("errors");
 
-$view->setVariable("Title", "Editar usuario");
+$view->setVariable("title", "Editar usuario");
 
 ?><h1><?= i18n("Modificar usuario")?></h1>
 
