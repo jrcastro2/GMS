@@ -42,6 +42,8 @@ $currentuser = $view->getVariable("currentusername");
 
 					<li><a href="index.php?controller=actividades&amp;action=index"><?= i18n("Actividades") ?></a></li>
 					<li><a href="index.php?controller=users&amp;action=index"><?= i18n("Usuarios") ?></a></li>
+
+					<li><a href="index.php?controller=sesiones&amp;action=index"><?= i18n("Sesiones") ?></a></li>
 					<?php if (isset($currentuser)): ?>
 	        <li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> <?= $currentuser; ?> </p></li>
 					 <li><a href="index.php?controller=users&amp;action=logout"><span class="glyphicon glyphicon-log-in"></span> <?= i18n("Cerrar sesion") ?></a></li>

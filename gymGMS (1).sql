@@ -244,3 +244,8 @@ INSERT INTO `usuario_apunta_actividades` (`Usuario_nombreusuario`, `Actividad_id
 ( 'Joshua', '4'),
 ( 'Jose', '4'),
 ( 'Domingo', '4');
+
+INSERT INTO `sesion`(`fechasesion`,`duracionsesion`,`comentario`,`Usuario_nombreusuario`) VALUES
+('2017-11-01','2','Buen trabajo de pecho, hay que mejorar esa pierna asi que para la semana dos series de sentadillas.','Domingo'),
+('2017-11-02','2','Buena sesion, estoy orgulloso de ti, como lo estaria tu padre.','Joshua'),
+('2017-11-03','2','Trabajo genial, no muchas personas levanta 200 kilos en press banca.','Jose');
