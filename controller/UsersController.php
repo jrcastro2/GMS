@@ -22,9 +22,7 @@ class UsersController extends BaseController {
 	}
 
 	public function index() {
-		if (!$this->userMapper->esAdmin($this->currentUser->getUsername())) {
-			throw new Exception("No eres Admin");
-		}
+		
 
 		$user = $this->userMapper->findAll();
 

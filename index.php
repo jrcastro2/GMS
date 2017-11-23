@@ -1,9 +1,9 @@
 <?php
 
-define("DEFAULT_CONTROLLER", "ejercicios");
+define("DEFAULT_CONTROLLER", "users");
 
 
-define("DEFAULT_ACTION", "index");
+define("DEFAULT_ACTION", "login");
 
 
 function run() {
