@@ -228,3 +228,19 @@ INSERT INTO `ejercicio_pertenece_tablaejercicios` (`Ejercicio_idejercicio`, `Tab
 ( '3', '12'),
 ( '2', '13'),
 ( '4', '13');
+
+
+INSERT INTO `usuario_apunta_actividades` (`Usuario_nombreusuario`, `Actividad_idactividad`) VALUES
+( 'Domingo', '1'),
+( 'Javier', '1'),
+( 'Joshua', '1'),
+( 'Jose', '2'),
+( 'Domingo', '2'),
+( 'Javier', '3'),
+( 'Joshua', '3'),
+( 'Jose', '3'),
+( 'Domingo', '3'),
+( 'Javier', '4'),
+( 'Joshua', '4'),
+( 'Jose', '4'),
+( 'Domingo', '4');
