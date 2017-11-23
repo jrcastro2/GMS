@@ -12,6 +12,7 @@ $view->setVariable("title", "Ejercicios");
 ?><h1><?=i18n("Ejercicios")?></h1>
 
 <?php if (isset($currentuser)): ?>
+	
 	<div class="col-md-12">
       <a class="glyphicon glyphicon-plus" id="nuevo-ejercicio" href="index.php?controller=ejercicios&amp;action=add" title="<?=i18n("Nuevo ejercicio");?>"></a>
     </div>

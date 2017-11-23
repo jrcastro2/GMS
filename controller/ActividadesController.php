@@ -3,6 +3,8 @@
 require_once(__DIR__."/../model/Actividad.php");
 require_once(__DIR__."/../model/ActividadMapper.php");
 require_once(__DIR__."/../model/User.php");
+require_once(__DIR__."/../model/UserMapper.php");
+
 
 require_once(__DIR__."/../core/ViewManager.php");
 require_once(__DIR__."/../controller/BaseController.php");
@@ -17,6 +19,7 @@ class ActividadesController extends BaseController {
 		parent::__construct();
 
 		$this->actividadMapper = new ActividadMapper();
+		$this->userMapper = new UserMapper();
 	}
 
 
@@ -52,6 +55,9 @@ class ActividadesController extends BaseController {
 	public function add() {
 		if (!isset($this->currentUser)) {
 			throw new Exception("Not in session. Adding actividades requires login");
+		}
+		if (!$this->userMapper->esAdmin($this->currentUser->getUsername())) {
+			throw new Exception("No eres Admin");
 		}
 
 		$actividad = new Actividad();
@@ -94,13 +100,16 @@ class ActividadesController extends BaseController {
 
 
 	public function edit() {
-		
+
 		if (!isset($_REQUEST["idactividad"])) {
 			throw new Exception("A actividad idactividad is mandatory");
 		}
 
 		if (!isset($this->currentUser)) {
 			throw new Exception("Not in session. Editing actividades requires login");
+		}
+		if (!$this->userMapper->esAdmin($this->currentUser->getUsername())) {
+			throw new Exception("No eres Admin");
 		}
 
 
@@ -142,7 +151,7 @@ class ActividadesController extends BaseController {
 				$this->view->setVariable("errors", $errors);
 			}
 		}
-		
+
 
 
 		$this->view->setVariable("actividad", $actividad);
@@ -158,6 +167,9 @@ class ActividadesController extends BaseController {
 		}
 		if (!isset($this->currentUser)) {
 			throw new Exception("Not in session. Editing actividades requires login");
+		}
+		if (!$this->userMapper->esAdmin($this->currentUser->getUsername())) {
+			throw new Exception("No eres Admin");
 		}
 
 
@@ -182,6 +194,6 @@ class ActividadesController extends BaseController {
 
 	}
 }
-	
-	
+
+
 	?>

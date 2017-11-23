@@ -6,73 +6,91 @@ require_once(__DIR__."/../core/ValidationException.php");
 class User {
 
 
-	private $username;
+	private $nombreusuario;
 
+	private $contraseña;
 
-	private $passwd;
+	private $correo;
 
-	private $mail;
-
-	private $type;
-
-
+	private $tipousuario;
 
 
 
-	public function __construct($username=NULL, $passwd=NULL, $mail=NULL, $type=NULL) {
-		$this->username = $username;
-		$this->passwd = $passwd;
-		$this->mail = $mail;
-		$this->type = $type;
+	public function __construct($nombreusuario=NULL, $contraseña=NULL, $correo=NULL, $tipousuario=NULL) {
+		$this->nombreusuario = $nombreusuario;
+		$this->contraseña = $contraseña;
+		$this->correo = $correo;
+		$this->tipousuario = $tipousuario;
 	}
 
 
 	public function getUsername() {
-		return $this->username;
+		return $this->nombreusuario;
 	}
 
-
-	public function setUsername($username) {
-		$this->username = $username;
-	}
-
-
-	public function getPasswd() {
-		return $this->passwd;
-	}
-
-	public function setPassword($passwd) {
-		$this->passwd = $passwd;
+	public function getPassword() {
+		return $this->contraseña;
 	}
 
 	public function getMail() {
-		return $this->mail;
+		return $this->correo;
 	}
 
-	public function setMail($mail) {
-		$this->mail = $mail;
+	public function getUserType() {
+		return $this->tipousuario;
 	}
 
-	public function getType() {
-		return $this->type;
+	public function setUsername($nombreusuario) {
+		$this->nombreusuario = $nombreusuario;
 	}
 
-	public function setType($type) {
-		$this->type = $type;
+	public function setPassword($contraseña) {
+		$this->contraseña = $contraseña;
 	}
 
-	
+	public function setMail($correo) {
+		$this->correo = $correo;
+	}
+
+	public function setUserType($tipousuario) {
+		$this->tipousuario = $tipousuario;
+	}
+
+
 	public function checkIsValidForRegister() {
 		$errors = array();
-		if (strlen($this->username) < 5) {
-			$errors["nombreusuario"] = "Username must be at least 5 characters length";
+		if (strlen($this->nombreusuario) < 5) {
+			$errors["nombreusuario"] = "username is not valid";
 
 		}
-		if (strlen($this->passwd) < 5) {
-			$errors["contraseña"] = "Password must be at least 5 characters length";
+		if (strlen($this->contraseña) < 5) {
+			$errors["contraseña"] = "password is not valid";
+		}
+		if (strlen($this->correo) <3) {
+			$errors["correo"] = "email is not valid";
 		}
 		if (sizeof($errors)>0){
-			throw new ValidationException($errors, "user is not valid");
+			throw new ValidationException($errors, "User is not valid");
 		}
 	}
+
+	public function checkIsValidForUpdate() {
+		$errors = array();
+
+		if (!isset($this->nombreusuario)) {
+			$errors["nombreusuario"] = "username is not valid";
+		}
+
+		try{
+			$this->checkIsValidForRegister();
+		}catch(ValidationException $ex) {
+			foreach ($ex->getErrors() as $key=>$error) {
+				$errors[$key] = $error;
+			}
+		}
+		if (sizeof($errors) > 0) {
+			throw new ValidationException($errors, "username is not valid");
+		}
+	}
+
 }

@@ -5,6 +5,8 @@ require_once(__DIR__."/../model/TablaMapper.php");
 require_once(__DIR__."/../model/Ejercicio.php");
 require_once(__DIR__."/../model/EjercicioMapper.php");
 require_once(__DIR__."/../model/User.php");
+require_once(__DIR__."/../model/UserMapper.php");
+
 
 require_once(__DIR__."/../core/ViewManager.php");
 require_once(__DIR__."/../controller/BaseController.php");
@@ -21,6 +23,7 @@ class TablasController extends BaseController {
 
 		$this->tablaMapper = new TablaMapper();
 		$this->ejercicioMapper = new EjercicioMapper();
+		$this->userMapper = new UserMapper();
 	}
 
 
@@ -58,6 +61,9 @@ class TablasController extends BaseController {
 	public function add() {
 		if (!isset($this->currentUser)) {
 			throw new Exception("Not in session. Adding tablas requires login");
+		}
+		if (!$this->userMapper->esAdmin($this->currentUser->getUsername())) {
+			throw new Exception("No eres Admin");
 		}
 
 		$tabla = new Tabla();
@@ -170,6 +176,10 @@ class TablasController extends BaseController {
 
 		if (!isset($this->currentUser)) {
 			throw new Exception("Not in session. Editing tablas requires login");
+		}
+
+		if (!$this->userMapper->esAdmin($this->currentUser->getUsername())) {
+			throw new Exception("No eres Admin");
 		}
 
 		$ejercicio = new Ejercicio();
@@ -294,6 +304,10 @@ class TablasController extends BaseController {
 		}
 		if (!isset($this->currentUser)) {
 			throw new Exception("Not in session. Editing tablas requires login");
+		}
+
+		if (!$this->userMapper->esAdmin($this->currentUser->getUsername())) {
+			throw new Exception("No eres Admin");
 		}
 
 

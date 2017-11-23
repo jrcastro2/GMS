@@ -3,16 +3,17 @@
 
 require_once(__DIR__."/../../core/ViewManager.php");
 $view = ViewManager::getInstance();
-$view->setVariable("title", "Login");
+
+$view->setVariable("nombreusuario", "Login");
 $errors = $view->getVariable("errors");
 ?>
 
 <h1><?= i18n("Entrar") ?></h1>
 <?= isset($errors["general"])?$errors["general"]:"" ?>
-
+<div class=crearEjercicio>
 <form action="index.php?controller=users&amp;action=login" method="POST">
 	<?= i18n("Nombre de usuario")?>: <input type="text" name="nombreusuario">
-	<?= i18n("Contraseña")?>: <input type="password" name="contraseña">
+	<?= i18n("Contraseña")?>: <input type="text" name="contraseña">
 	<input type="submit" value="<?= i18n("Entrar") ?>">
 </form>
 
@@ -20,3 +21,4 @@ $errors = $view->getVariable("errors");
 <?php $view->moveToFragment("css");?>
 <link rel="stylesheet" type="text/css" src="css/style2.css">
 <?php $view->moveToDefaultFragment(); ?>
+</div>

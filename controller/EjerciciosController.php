@@ -2,6 +2,7 @@
 
 require_once(__DIR__."/../model/Ejercicio.php");
 require_once(__DIR__."/../model/EjercicioMapper.php");
+require_once(__DIR__."/../model/UserMapper.php");
 require_once(__DIR__."/../model/User.php");
 
 require_once(__DIR__."/../core/ViewManager.php");
@@ -17,6 +18,7 @@ class EjerciciosController extends BaseController {
 		parent::__construct();
 
 		$this->ejercicioMapper = new EjercicioMapper();
+		$this->userMapper = new UserMapper();
 	}
 
 
@@ -52,6 +54,10 @@ class EjerciciosController extends BaseController {
 	public function add() {
 		if (!isset($this->currentUser)) {
 			throw new Exception("Not in session. Adding ejercicios requires login");
+		}
+
+		if (!$this->userMapper->esAdmin($this->currentUser->getUsername())) {
+			throw new Exception("No eres Admin");
 		}
 
 		$ejercicio = new Ejercicio();
@@ -100,6 +106,11 @@ class EjerciciosController extends BaseController {
 		if (!isset($this->currentUser)) {
 			throw new Exception("Not in session. Editing ejercicios requires login");
 		}
+
+		if (!$this->userMapper->esAdmin($this->currentUser->getUsername())) {
+			throw new Exception("No eres Admin");
+		}
+
 
 
 		$ejercicioid = $_REQUEST["idejercicio"];
@@ -155,6 +166,11 @@ class EjerciciosController extends BaseController {
 		if (!isset($this->currentUser)) {
 			throw new Exception("Not in session. Editing ejercicios requires login");
 		}
+
+		if (!$this->userMapper->esAdmin($this->currentUser->getUsername())) {
+			throw new Exception("No eres Admin");
+		}
+
 
 
 		$ejercicioid = $_REQUEST["idejercicio"];
