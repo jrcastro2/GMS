@@ -62,7 +62,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `gymGMS`.`Actividad` (
   `idactividad` INT NOT NULL AUTO_INCREMENT,
   `nombreactividad` VARCHAR(45) NULL,
-  `descripcionactividad` VARCHAR(45) NULL,
+  `descripcionactividad` VARCHAR(1000) NULL,
   `dia`INT NULL,
   `hora` INT NULL,
   `capacidad` INT NULL,
@@ -155,6 +155,26 @@ CREATE TABLE IF NOT EXISTS `gymGMS`.`Usuario_hace_TablaEjercicios` (
 ENGINE = InnoDB;
 
 
+CREATE TABLE IF NOT EXISTS `gymGMS`.`Usuario_apunta_Actividades` (
+  `Usuario_nombreusuario`  VARCHAR(45) NOT NULL,
+  `Actividad_idactividad` INT NOT NULL,
+
+  PRIMARY KEY (`Usuario_nombreusuario`, `Actividad_idactividad`),
+  INDEX `fk_Usuario_apunta_Actividades_Actividadesx_idx` (`Actividad_idactividad` ASC),
+  INDEX `fk_Usuario_apunta_Actividades_Usuariox_nombreusuariox` (`Usuario_nombreusuario` ASC),
+  CONSTRAINT `fk_Usuario_apunta_Actividades_Usuariox`
+    FOREIGN KEY (`Usuario_nombreusuario`)
+    REFERENCES `gymGMS`.`Usuario` (`nombreusuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Usuario_apunta_Actividades_Actividadesx`
+    FOREIGN KEY (`Actividad_idactividad`)
+    REFERENCES `gymGMS`.`Actividad` (`idactividad`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
@@ -192,6 +212,12 @@ INSERT INTO `tablaejercicios` (`idtabla`, `nombretabla`) VALUES
 ( '11', 'Martes'),
 ( '12', 'Jueves'),
 ( '13', 'Viernes');
+
+INSERT INTO `actividad`(`idactividad`,`nombreactividad`,`descripcionactividad`,`dia`,`hora`,`capacidad`) VALUES
+('1','Aerobic','actividad para las personas cuyas condiciones físicas no soporten clases muy intensas y que más que adelgazar busquen mantenerse en un buen estado de salud.',4,10,20),
+('2','Step','Esta clase consiste en la realización de movimientos aeróbicos coreografiados sobre una altura o step',8,12,14),
+('3','Body combat','clase cardiovascular que busca acelerar el corazón mediante una combinación de movimientos de lucha y artes marciales como boxeo, kárate o Kick boxing.',14,11,22),
+('4','Zumba','Esta clase de ejercicio cardiovascular va dirigida a todas aquellas personas que quieran mantener o bajar de peso de forma divertida al son de distintos ritmos',18,16,25);
 
 INSERT INTO `ejercicio_pertenece_tablaejercicios` (`Ejercicio_idejercicio`, `TablaEjercicios_idtabla`) VALUES
 ( '1', '10'),
