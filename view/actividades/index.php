@@ -7,7 +7,7 @@ $view = ViewManager::getInstance();
 $actividades = $view->getVariable("actividades");
 $currentuser = $view->getVariable("currentusername");
 
-$view->setVariable("title", "Actividades");
+$view->setVariable("nombreactividad", "Actividades");
 
 ?><h1><?=i18n("Actividades")?></h1>
 

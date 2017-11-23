@@ -87,6 +87,18 @@ class UserMapper {
 			return false;
 		}
 	}
+	
+	public function exists($usuarioname){
+		$stmt = $this->db->prepare("SELECT * FROM usuario WHERE nombreusuario=?");
+		$stmt->execute(array($usuarioname));
+		$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+		if($user != null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 
 }

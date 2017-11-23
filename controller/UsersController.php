@@ -22,13 +22,23 @@ class UsersController extends BaseController {
 	}
 
 	public function index() {
-		
+
 
 		$user = $this->userMapper->findAll();
 
 		$this->view->setVariable("users", $user);
 
 		$this->view->render("users", "index");
+	}
+
+	public function inicio() {
+
+
+		$user = $this->userMapper->findAll();
+
+		$this->view->setVariable("users", $user);
+
+		$this->view->render("users", "inicio");
 	}
 
 

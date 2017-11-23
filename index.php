@@ -3,7 +3,7 @@
 define("DEFAULT_CONTROLLER", "users");
 
 
-define("DEFAULT_ACTION", "login");
+define("DEFAULT_ACTION", "inicio");
 
 
 function run() {

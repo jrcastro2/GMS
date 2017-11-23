@@ -30,7 +30,7 @@ $currentuser = $view->getVariable("currentusername");
 		<nav class="navbar navbar-inverse" id="navfontcolor">
 	    <div class="container-fluid">
 	      <div class="navbar-header">
-	        <a class="navbar-brand" href="index.php?controller=ejercicios&amp;action=index">GMS</a>
+	        <a class="navbar-brand" href="index.php?controller=users&amp;action=inicio">GMS</a>
 	      </div>
 
 				<span id="spanlang"> <?php include(__DIR__."/language_select_element.php");?> </span>
